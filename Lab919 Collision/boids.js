@@ -5,6 +5,7 @@ function Boid(loc, vel, col){
   this.loc = loc;
   this.vel = vel;
   this.col = col;
+  this.isDead = false;
   //this function calls other functions
   this.run = function(){
     this.checkEdges();
@@ -19,7 +20,7 @@ function Boid(loc, vel, col){
       if(d<150){
         var repForce = p5.Vector.sub(this.loc, chaser.loc);
         repForce.normalize();
-        repForce.mult(.5);
+        repForce.mult(.05);
         this.vel.add(repForce);
       }
 

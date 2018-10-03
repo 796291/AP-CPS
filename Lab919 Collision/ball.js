@@ -16,12 +16,10 @@ function Ball(loc, vel, rad, col){
     this.update();
     this.render();
   }
-  //This function changes the location of the ball
-  //by adding speed to x and y
+//lerp
   this.update = function(){
     var mouseLoc = createVector(mouseX, mouseY)
-    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09)
-    this.loc.add(this.vel);
+    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .1)
   }
   //checkEdges() reverses speed when the ball touches an edge
   this.checkEdges = function(){
