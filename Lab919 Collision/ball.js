@@ -3,7 +3,7 @@
 ** Jakob Hachigian-Kreutzer
 ** 919
 */
-
+//function which creates the ball that the player controls
 function Ball(loc, vel, rad, col){
   // Instance variables
   this.loc = loc;
@@ -16,12 +16,13 @@ function Ball(loc, vel, rad, col){
     this.update();
     this.render();
   }
-//lerp
+//lerp - ball falls after the mouse
   this.update = function(){
     var mouseLoc = createVector(mouseX, mouseY)
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .1)
   }
   //checkEdges() reverses speed when the ball touches an edge
+  //keeps the ball from going off the canvas
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;
     if(this.loc.x > width) this.vel.x = -this.vel.x;

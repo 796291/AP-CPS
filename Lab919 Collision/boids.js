@@ -1,5 +1,5 @@
 
-
+//function which, through abstraction, creates the boids
 function Boid(loc, vel, col){
   // Instance variables
   this.loc = loc;
@@ -12,21 +12,21 @@ function Boid(loc, vel, col){
     this.update();
     this.render();
   }
-  //This function changes the location of the ball
-  //by adding speed to x and y
+//function repealing the boids from the player controlled ball
   this.update = function(){
     if(this !== chaser)
       var d = this.loc.dist(chaser.loc);
       if(d<150){
         var repForce = p5.Vector.sub(this.loc, chaser.loc);
         repForce.normalize();
-        repForce.mult(.05);
+        repForce.mult(.1);
         this.vel.add(repForce);
       }
 
     this.loc.add(this.vel);
   }
   //checkEdges() reverses speed when the ball touches an edge
+  //makes sure the boids don't go off the canvas
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;
     if(this.loc.x > width) this.vel.x = -this.vel.x;
