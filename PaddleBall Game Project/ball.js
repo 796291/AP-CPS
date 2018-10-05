@@ -4,6 +4,7 @@
 ** 10/4/18
 */
 
+//function creating balls, utilized through abstraction
 function Ball(loc, vel, rad, col){
   // Instance variables
   this.loc = loc;
@@ -25,6 +26,7 @@ function Ball(loc, vel, rad, col){
     this.loc.mag();
   }
   //checkEdges() reverses speed when the ball touches an edge
+  //keeps shit from going off the edge
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;
     if(this.loc.x > width) this.vel.x = -this.vel.x;
