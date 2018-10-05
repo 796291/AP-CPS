@@ -19,7 +19,8 @@ function Boid(loc, vel, col){
       if(d<150){
         var repForce = p5.Vector.sub(this.loc, chaser.loc);
         repForce.normalize();
-        repForce.mult(.1);
+        //speed boids are repealled at
+        repForce.mult(.2);
         this.vel.add(repForce);
       }
 
@@ -39,6 +40,7 @@ function Boid(loc, vel, col){
     fill(this.col);
     push()
       translate(this.loc.x, this.loc.y);
+      //determines where boids are facing
       rotate(this.vel.heading() + radians(90));
       triangle(-5, 0, 5, 0, 0, -15);
     pop()

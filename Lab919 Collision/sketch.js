@@ -24,6 +24,7 @@ function setup(){
 function loadBoids(numbBoids){
   for(var i = 0; i < numbBoids; i++){
         var loc = createVector(random(width), random(height));
+        //boids starting speed
         var vel = createVector(random(-3,3), random(-3,3));
         var col = color(random(0,255), random(0,255), random(0,255));
         //removes outlines from boids
