@@ -19,8 +19,9 @@ function Paddle(loc, vel, width, length, col){
   }
 //lerp -- paddle follows mouse
   this.update = function(){
-    var mouseLoc = createVector(mouseX, mouseY)
-    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .1)
+    //make paddle lerp to middle of rectangle instead of corner
+    paddleLength = width/2
+    this.loc.x = lerp(this.loc.x, mouseX-paddleLength, .15)
   }
   //checkEdges() reverses speed when the rectangle touches an edge
   this.checkEdges = function(){
