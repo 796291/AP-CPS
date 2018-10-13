@@ -29,7 +29,7 @@ function loadBalls(numBalls){
   for(var i = 0; i < numBalls; i++){
     //where the balls are spawned in
     var loc = createVector(random(100, 600), 20);
-    var vel = createVector(random(-.1,.1), random(-.1,.1));
+    var vel = createVector(random(-5, 5), random(-5, 5));
     var rad = 25
     var col = color(random(0, 255), random(0, 255), random(0, 255));
     var b = new Ball(loc, vel, rad, col);
@@ -56,12 +56,20 @@ function draw(){
     var distY1 = y - paddle.loc.y;
     var distY2 = y - paddle2.loc.y;
     //needs to be within y distance and within the paddles 2 corners
+    //splice the balls if they touch the top of the paddle1
     if((distY1 > -10) && (distY1 < 0) && (x > paddle.loc.x) && (x < paddle.loc.x+250)){
-      aBalls.vel.y = -aBalls.vel.y
-    }
-    //splice out the balls when they hits paddle2 (make sure to keep them in for paddle1 hits
-    if((distY2 < 10) && (distY2 > 0) && (x > paddle.loc.x) && (x < paddle.loc.x+250)){
       Balls.splice(i,1);
+    }
+    //"reset" the balls if a ball hits the buttom
+    if((distY2 < 10) && (distY2 > 0) && (x > paddle.loc.x) && (x < paddle.loc.x+250)){
+      //decides how many balls are going to be in the next "reset"
+      var numBalls = Balls.length + 5;
+      //resets the array (deleted all the current balls)
+      Balls = []
+      loadBalls(numBalls)
+      for(var i = 0; i < Balls.length; i++){
+        Balls[i].run;
+      }
     }
   }
 }
