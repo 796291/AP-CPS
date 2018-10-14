@@ -1,7 +1,7 @@
 //Global variables
 var Balls = [];
 var paddle;
-
+var score = 0;
 //setup canvas
 function setup(){
   var cnv = createCanvas(800, 800);
@@ -42,6 +42,10 @@ function loadBalls(numBalls){
 //draw boids + mouse controlled ball
 function draw(){
   background(20, 20, 20, 6000);
+  //control the score
+  textSize(32);
+  fill(255, 255, 255);
+  text(score, 400, 400)
   //get rid of outlines
   noStroke();
   paddle.run();
@@ -59,6 +63,8 @@ function draw(){
     //splice the balls if they touch the top of the paddle1
     if((distY1 > -10) && (distY1 < 0) && (x > paddle.loc.x) && (x < paddle.loc.x+250)){
       Balls.splice(i,1);
+      //adds to score for every ball
+      score = score + 1;
     }
     //"reset" the balls if a ball hits the buttom
     if((distY2 < 10) && (distY2 > 0) && (x > paddle.loc.x) && (x < paddle.loc.x+250)){
