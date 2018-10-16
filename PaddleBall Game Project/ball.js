@@ -17,6 +17,7 @@ function Ball(loc, vel, rad, col, sp){
     this.checkEdges();
     this.update();
     this.render();
+    this.checkPaddle();
   }
   //This function changes the location of the ball
   //by adding speed to x and y
@@ -41,12 +42,14 @@ function Ball(loc, vel, rad, col, sp){
 
   //checking when the ball hits the paddle
   this.checkPaddle = function(){
+    console.log("checkp")
     var distY = this.loc.y - 560
     //looking for if the ball is hitting the top of the bottom of the paddle
     if((distY > -10) && (this.loc.x > mouseX - 125) && (this.loc.x < mouseX + 125)){
       sp = "t"
+      console.log("t")
     }
-    if((distY < 10) && (this.loc.x > mouseX -125 ) && (this.loc.x < mouseX -125)){
+    if((distY < 10) && (this.loc.x > mouseX -125 ) && (this.loc.x < mouseX - 125)){
       sp = "f"
     }
   }

@@ -50,15 +50,16 @@ function draw(){
   paddle.run();
   for(var i = 0; i < Balls.length; i++){
     Balls[i].run();
-    var aBalls = Balls[i]
+    var aBalls = Balls[i];
     //splice the balls if they have touched the top of the paddle
-    if(aBalls.sp = "t"){
+    if(aBalls.sp == "t"){
+      console.log("sp")
       Balls.splice(i,1);
       //adds to score for every ball
       score = score + 1;
     }
     //"reset" the balls if a ball hits the buttom
-    if(aBalls.sp = "f"){
+    if(aBalls.sp == "f"){
       //decides how many balls are going to be in the next "reset"
       var numBalls = Balls.length + 5;
       //resets the array (deleted all the current balls)
