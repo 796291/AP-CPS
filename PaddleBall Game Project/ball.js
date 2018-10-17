@@ -11,7 +11,7 @@ function Ball(loc, vel, rad, col, sp){
   this.vel = vel;
   this.rad = rad;
   this.col = col;
-  sp = "na"
+  this.sp = sp;
   //this function calls other functions
   this.run = function(){
     this.checkEdges();
@@ -42,15 +42,14 @@ function Ball(loc, vel, rad, col, sp){
 
   //checking when the ball hits the paddle
   this.checkPaddle = function(){
-    console.log("checkp")
-    var distY = this.loc.y - 560
+    //takes location of center of ball - paddle y + 1/2(paddle's length)
+    var distY = abs(this.loc.y - 560)
     //looking for if the ball is hitting the top of the bottom of the paddle
-    if((distY > -10) && (this.loc.x > mouseX - 125) && (this.loc.x < mouseX + 125)){
-      sp = "t"
-      console.log("t")
+    if((distY < 10) && (this.loc.x > mouseX - 125) && (this.loc.x < mouseX + 125) && (this.vel.y > 0)){
+      this.sp = 1
     }
-    if((distY < 10) && (this.loc.x > mouseX -125 ) && (this.loc.x < mouseX - 125)){
-      sp = "f"
+    if((distY < 10) && (this.loc.x > mouseX - 125 ) && (this.loc.x < mouseX + 125) && (this.vel.y < 0)){
+      this.sp = 2
     }
   }
 }

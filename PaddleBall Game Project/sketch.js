@@ -30,7 +30,7 @@ function loadBalls(numBalls){
     var vel = createVector(random(-5, 5), random(-5, 5));
     var rad = 25
     var col = color(random(0, 255), random(0, 255), random(0, 255));
-    var sp = "na"
+    var sp = 3
     var b = new Ball(loc, vel, rad, col, sp);
     //add balls to the array
     Balls.push(b);
@@ -52,14 +52,15 @@ function draw(){
     Balls[i].run();
     var aBalls = Balls[i];
     //splice the balls if they have touched the top of the paddle
-    if(aBalls.sp == "t"){
-      console.log("sp")
+    console.log(aBalls.sp);
+    if(aBalls.sp == 1){
+      console.log("in if")
       Balls.splice(i,1);
       //adds to score for every ball
       score = score + 1;
     }
     //"reset" the balls if a ball hits the buttom
-    if(aBalls.sp == "f"){
+    if(aBalls.sp == 2){
       //decides how many balls are going to be in the next "reset"
       var numBalls = Balls.length + 5;
       //resets the array (deleted all the current balls)
