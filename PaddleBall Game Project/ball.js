@@ -12,6 +12,7 @@ function Ball(loc, vel, rad, col, sp){
   this.rad = rad;
   this.col = col;
   this.sp = sp;
+  this.acc = createVector(0, .1);
   //this function calls other functions
   this.run = function(){
     this.checkEdges();
@@ -22,8 +23,10 @@ function Ball(loc, vel, rad, col, sp){
   //This function changes the location of the ball
   //by adding speed to x and y
   this.update = function(){
-    this.loc.x = this.loc.x + this.vel.x;
-    this.loc.y = this.loc.y + this.vel.y;
+    this.loc.add(this.vel);
+    this.vel.add(this.acc);
+    this.loc.add(this.vel);
+    this.loc.mag();
   }
   //checkEdges() reverses speed when the ball touches an edge
   //keeps shit from going off the edge
