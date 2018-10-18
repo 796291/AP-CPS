@@ -52,9 +52,7 @@ function draw(){
     Balls[i].run();
     var aBalls = Balls[i];
     //splice the balls if they have touched the top of the paddle
-    console.log(aBalls.sp);
     if(aBalls.sp == 1){
-      console.log("in if")
       Balls.splice(i,1);
       //adds to score for every ball
       score = score + 1;
