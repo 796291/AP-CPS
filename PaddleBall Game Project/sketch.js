@@ -44,20 +44,18 @@ function draw(){
   //control the score
   textSize(32);
   fill(random(0,255), random(0,255), random(0,255));
-  text("score =", 400, 100);
-  fill(random(0,255), random(0,255), random(0,255));
-  text(score, 515, 100)
+  text("score = " + score, 50, 50);
   //instructions
-  if(score == 0){
+  if(score < 10){
     fill(random(0,255), random(0,255), random(0,255));
-    text("Collect 50 Balls!", 400, 400);
+    text("Collect 50 Balls!", 500, 50);
   }
   //if instructions are completed
   if(score == 50){
     score = score + 1
     fill(random(0,255), random(0,255), random(0,255));
     textSize(120);
-    text("You Win!", 400, 400);
+    text("You Win!", 350, 400);
     //prize
     var numBalls = 1000;
     Balls = []
@@ -81,7 +79,7 @@ function draw(){
     //"reset" the balls if a ball hits the buttom
     if(aBalls.sp == 2){
       //decides how many balls are going to be in the next "reset"
-      var numBalls = Balls.length + 5;
+      var numBalls = Balls.length + 100;
       //resets the array (deleted all the current balls)
       Balls = []
       loadBalls(numBalls)
