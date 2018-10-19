@@ -7,8 +7,6 @@ function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  //instructions
-  text("Collect 50 Balls!", 400, 400);
   //# of boids loaded
   numBalls = 20;
   loadBalls(numBalls);
@@ -49,6 +47,11 @@ function draw(){
   text("score =", 400, 100);
   fill(random(0,255), random(0,255), random(0,255));
   text(score, 515, 100)
+  //instructions
+  if(score == 0){
+    fill(random(0,255), random(0,255), random(0,255));
+    text("Collect 50 Balls!", 400, 400);
+  }
   //if instructions are completed
   if(score == 50){
     score = score + 1
@@ -56,7 +59,7 @@ function draw(){
     textSize(120);
     text("You Win!", 400, 400);
     //prize
-    var numBalls = 500;
+    var numBalls = 1000;
     Balls = []
     loadBalls(numBalls);
     for(var i = 0; i < numBalls; i++){
