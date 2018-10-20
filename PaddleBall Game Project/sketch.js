@@ -46,7 +46,7 @@ function draw(){
   fill(random(0,255), random(0,255), random(0,255));
   text("score = " + score, 50, 50);
   //instructions
-  if(score < 10){
+  if(score < 50){
     fill(random(0,255), random(0,255), random(0,255));
     text("Collect 50 Balls!", 500, 50);
   }
