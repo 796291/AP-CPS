@@ -1,1 +1,8 @@
-bat, apple, word, yes, eat, food
+bat
+apple
+munch
+scum
+rat
+edibog
+manked
+cracked

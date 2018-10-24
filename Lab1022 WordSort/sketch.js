@@ -1,17 +1,18 @@
 
 //Jakob Hachigian-Kreutzer
 //Lab1022 WordSort
+var txt = ["rum", "rat", "asda", "asrasd", "rut", "rom"];
 function setup() {
   //remove blank black screen
   noCanvas();
+  console.log(txt)
+  bubbleSort(txt);
 }
 
 function draw() {
-  //call sorting function
-  bubbleSort(txt);
 }
 //what is being sorted
-var txt = ["bat", "cat", "rat", "scum", "rum", "food", "dude"];
+
 //print original text
 console.log(txt);
 function bubbleSort(txt) {
@@ -21,11 +22,8 @@ function bubbleSort(txt) {
         //notice that j < (length - i)
         for (var j = 0; j < (length - i - 1); j++) {
             //Compare the adjacent positions
-            var az = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-            //look at the 1st letters of the 2 words being compared
-            var txt1 = az.indexOf(txt[j].charAt(0));
-            var txt2 = az.indexOf(txt[j+1].charAt(0));
-            if(txt1 > txt2) {
+
+            if(txt[j] > txt[j+1]) {
                 //swap the numbers
                 //temperary variable
                 var temp = txt[j];
