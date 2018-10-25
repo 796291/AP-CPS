@@ -1,7 +1,8 @@
 
 //Jakob Hachigian-Kreutzer
 //Lab1022 WordSort
-var txt = ["rum", "rat", "asda", "asrasd", "rut", "rom"];
+//what is being sorted
+var txt = ["manked", "zoot", "yeet", "edibog", "mental", "fridge"];
 function setup() {
   //remove blank black screen
   noCanvas();
@@ -11,10 +12,7 @@ function setup() {
 
 function draw() {
 }
-//what is being sorted
 
-//print original text
-console.log(txt);
 function bubbleSort(txt) {
     var length = txt.length;
     //number of passes
@@ -22,7 +20,6 @@ function bubbleSort(txt) {
         //notice that j < (length - i)
         for (var j = 0; j < (length - i - 1); j++) {
             //Compare the adjacent positions
-
             if(txt[j] > txt[j+1]) {
                 //swap the numbers
                 //temperary variable
