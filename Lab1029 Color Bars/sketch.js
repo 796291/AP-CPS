@@ -7,8 +7,11 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
+  //amount of bars being displayed
   numBars = 40;
+  //loading that amount of balls
   loadBars(numBars);
+  //call sorting function
   bubbleSort(Bars);
 }
 
@@ -29,7 +32,9 @@ function loadBars(numBars){
     var green = random(0, 255);
     var blue = random(0, 255);
     var clr = color(red, green, blue);
-    var clrAvg = (red + green+ blue)/3;
+    //find the average of the color values - what is be ng sorted by
+    var clrAvg = (red + green + blue)/3;
+    //create the colorbars through abstraction
     var bar = new colorbar(loc, w, h, clr, clrAvg);
     Bars.push(bar);
   }
