@@ -9,6 +9,7 @@ function colorbar(loc, w, h, clr, clrAvg){
     this.render();
   }
 
+//creates the bar
   this.render = function(){
     fill(this.clr);
     rect(this.loc.x, this.loc.y, this.w, this.h);

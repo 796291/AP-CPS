@@ -4,6 +4,7 @@
 var Bars = [];
 
 function setup() {
+  //create canvas
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
@@ -17,7 +18,9 @@ function setup() {
 
 function draw() {
   background(20, 20, 20, 6000);
+  //remove outline
   noStroke();
+  //create bars
   for(var i = 0; i < Bars.length; i++){
     Bars[i].run();
   }
@@ -40,6 +43,7 @@ function loadBars(numBars){
   }
 }
 
+//sorts the bars by average rgb aka (r + g + b)/3
 function bubbleSort(Bars) {
     var length = Bars.length;
     for (var i = 0; i < length; i++) {
