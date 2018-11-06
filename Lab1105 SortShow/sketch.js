@@ -2,38 +2,40 @@
 //Jakob Hachigian-Kreutzer
 //Lab1022 WordSort
 //what is being sorted
-var json = [];
-function preload(){
-  json = loadJSON("population.json");
-}
+var data = [];
 
 function setup() {
   //remove blank black screen
   noCanvas();
-  bubbleSort(json);
-  console.log(json.countrydata)
+  loadJSON("population.json", gotData)
+  bubbleSort(data);
+  console.log(data.countrydata)
 }
 
 function draw() {
 }
 
-function bubbleSort(json) {
-    var length = json.length;
+function gotData(jData){
+  data = jData;
+}
+
+function bubbleSort(data) {
+    var length = data.length;
     //number of passes
     for (var i = 0; i < length; i++) {
         //notice that j < (length - i)
         for (var j = 0; j < (length - i - 1); j++) {
             //Compare the adjacent positions
-            var a = json[j].countrydata.country;
-            var b = json[j+1].countrydata.country;
-            if(json[j] > json[j+1]) {
+            var a = data[j].countrydata.country;
+            var b = data[j+1].countrydata.country;
+            if(data[j] > data[j+1]) {
                 //swap the numbers
                 //temperary variable
-                var temp = json[j];
+                var temp = data[j];
                 //replace current string with adjacent string
-                json[j] = json[j+1];
+                data[j] = data[j+1];
                 //replace adjacent string with temp string (current string)
-                json[j+1] = temp;
+                data[j+1] = temp;
             }
         }
     }
