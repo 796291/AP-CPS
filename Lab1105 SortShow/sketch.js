@@ -2,21 +2,22 @@
 //Jakob Hachigian-Kreutzer
 //Lab1022 WordSort
 //what is being sorted
+var diameter = 400;
+var angles = [];
 var data = [];
+function preload(){
+  data = loadJSON("population.json");
+}
 
 function setup() {
-  //remove blank black screen
-  noCanvas();
-  loadJSON("population.json", gotData)
+  var cnv = createCanvas(800, 800);
+  cnv.position((windowWidth-width)/2, 30);
+  backgound(20, 20, 20);
   bubbleSort(data);
   console.log(data.countrydata)
 }
 
 function draw() {
-}
-
-function gotData(jData){
-  data = jData;
 }
 
 function bubbleSort(data) {
@@ -39,4 +40,16 @@ function bubbleSort(data) {
             }
         }
     }
+}
+
+
+
+function pieChart(diameter, data){
+  var lastAngle = 0;
+  for (var i = 0; i < data.length, 0, 255){
+    var color = map(i, 0. data.length, 0, 255);
+    fill()
+    arc(400, 400, diameter, diameter, lastAngle, lastAngle + radians(angles[i]));
+    lastAngle += radians(angles[i]);
+  }
 }
