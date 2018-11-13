@@ -45,3 +45,11 @@ function bubbleSort(data) {
 
 
 //function pieChart(diameter, data){
+//  var lastAngle = 0;
+//  for (var i = 0; i < data.length, 0, 255){
+//    var color = map(i, 0. data.length, 0, 255);
+//    fill()
+//    arc(400, 400, diameter, diameter, lastAngle, lastAngle + radians(angles[i]));
+//    lastAngle += radians(angles[i]);
+//  }
+//}
