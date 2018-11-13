@@ -21,14 +21,14 @@ function draw() {
 
 function bubbleSort(data) {
   console.log(data.countrydata)
-  var length = data.length;
+  var length = Object.keys(data.countrydata).length;
   //number of passes
   for (var i = 0; i < length; i++) {
       //notice that j < (length - i)
       for (var j = 0; j < (length - i - 1); j++) {
           //Compare the adjacent positions
-          var a = data[j].countrydata.total;
-          var b = data[j+1].countrydata.total;
+          var a = data.countrydata.total;
+          var b = data.countrydata.total;
           if(a > b) {
               //swap the numbers
               //temperary variable
