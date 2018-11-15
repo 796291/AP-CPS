@@ -14,23 +14,29 @@ function setup(){
 }
 
 function draw(){
+  background(20, 20, 20, 6000);
   snake.run();
 }
 
-function keyPress(){
+function keyPressed(){
+  //up
   if(keyCode === 38){
-
+    snake.vel = createVector(0, -1);
+    snake.loc.add(snake.vel);
   }
-
+  //down
   if(keyCode === 40){
-
+    snake.vel = createVector(0, 1);
+    snake.loc.add(snake.vel);
   }
-
-  if(keyCode === 37){
-
-  }
-
+  //right
   if(keyCode === 39){
-
+    snake.vel = createVector(1, 0);
+    snake.loc.add(snake.vel);
+  }
+  //left
+  if(keyCode === 37){
+    snake.vel = createVector(-1, 0);
+    snake.loc.add(snake.vel);
   }
 }
