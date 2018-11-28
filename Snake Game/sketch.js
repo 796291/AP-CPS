@@ -48,6 +48,7 @@ function loadSnake(numSnake){
 function loadFood(numFood){
   for(var i = 0; i < numFood; i++){
     var min = 1;
+    //40 * 20 = 800
     var max = 40;
     var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
     var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
