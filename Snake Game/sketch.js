@@ -1,13 +1,13 @@
 var snake = [];
 var food = [];
-var s;
+var numSnake = 1;
 
 function setup(){
   frameRate(15);
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  loadSnake(1);
+  loadSnake(numSnake);
   loadFood(1);
 }
 
@@ -32,16 +32,30 @@ function checkLoc(){
     if(distX == (0) && distY == (0)){
       food.splice(i, 1);
       loadFood(1);
+      numSnake = numSnake + 1
     }
   }
 }
 
+function loadSeg(numSeg){
+  for(var i = 0; i < numSeg; i++){
+
+  }
+}
+
 function loadSnake(numSnake){
-  for(var i = 0; i < numSnake; i++){
+  if(numSnake = 1){
     var loc = createVector(200, 200);
     var vel = createVector(0, 0);
     s = new Snake(loc, vel);
     snake.push(s);
+  }else if(numSnake > 1){
+    for(var i = 1; i < numSnake; i++){
+      var loc = createVector(snake[i-1].loc.x, snake[i-1].loc.y)
+      var vel = createVector(0, 0);
+      seg = new Snake(loc, vel);
+      snake.push()
+    }
   }
 }
 
@@ -49,7 +63,7 @@ function loadFood(numFood){
   for(var i = 0; i < numFood; i++){
     var min = 1;
     //40 * 20 = 800
-    var max = 40;
+    var max = 39;
     var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
     var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
     var loc = createVector(locX, locY);
