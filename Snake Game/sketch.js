@@ -29,7 +29,7 @@ function checkLoc(){
     if(distX == (0) && distY == (0)){
       food.splice(i, 1);
       loadFood(1);
-      snake.numSeg = snake.numSeg + 1;
+      numSeg = numSeg + 1;
     }
   }
 }

@@ -1,8 +1,7 @@
-function Snake(loc, vel, numSeg){
+function Snake(loc, vel){
 
   this.loc = loc;
   this.vel = vel;
-  this.numSeg = numSeg;
   this.segments = [];
   this.segments.push(createVector(0, 0));
 
@@ -20,12 +19,9 @@ function Snake(loc, vel, numSeg){
   }
 
   this.render = function(){
-    for(var i = 0; i < this.numSeg; i++){
-      noStroke();
-      fill(0, 0, 255);
-      this.segments.push(createVector(this.segments[i].x, this.segments[i].y));
-      rect(this.segments[i].x, this.segments[i].y, 20, 20)
-    }
+    noStroke();
+    fill(0, 0, 255);
+    rect(this.segments[0].x, this.segments[0].y, 20, 20)
     noStroke();
     fill(0, 255, 0);
     rect(this.loc.x, this.loc.y, 20, 20);
