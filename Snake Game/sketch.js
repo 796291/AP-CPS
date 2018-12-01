@@ -30,6 +30,8 @@ function checkLoc(){
       food.splice(i, 1);
       loadFood(1);
       numSeg = numSeg + 1;
+      snake.segments.push(createVector(0, 0));
+      console.log(snake.segments.length)
     }
   }
 }
