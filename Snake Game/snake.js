@@ -12,7 +12,7 @@ function Snake(loc, vel){
 
   this.update = function(){
     console.log(numSeg);
-    for(var i = 1; i < numSeg; i++){
+    for(var i = this.segments.length - 1; i > 1; i = i - 1){
       this.segments[i].x = this.segments[i-1].x
       this.segments[i].y = this.segments[i-1].y
     }
@@ -24,7 +24,7 @@ function Snake(loc, vel){
   }
 
   this.render = function(){
-    for(var i = 0; i < numSeg; i++){
+    for(var i = 0; i < this.segments.length; i++){
       fill(0, numSeg, 300*i);
       rect(this.segments[i].x, this.segments[i].y, 20, 20)
     }

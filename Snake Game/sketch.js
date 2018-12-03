@@ -12,6 +12,7 @@ function setup(){
 }
 
 function draw(){
+      console.log(numSeg + " numSeg")
   background(20, 20, 20);
   snake.run();
 
