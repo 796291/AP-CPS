@@ -3,21 +3,21 @@ function Snake(loc, vel){
   this.loc = loc;
   this.vel = vel;
   this.segments = [];
-  this.segments.push(createVector(0, 0));
-
   this.run = function(){
+    console.log()
     this.update();
     this.render();
   }
 
   this.update = function(){
-    console.log(numSeg);
-    for(var i = this.segments.length - 1; i > 1; i = i - 1){
+    for(var i = this.segments.length; i > 1; i = i - 1){
       this.segments[i].x = this.segments[i-1].x
       this.segments[i].y = this.segments[i-1].y
     }
-    this.segments[0].x = this.loc.x;
-    this.segments[0].y = this.loc.y;
+    if(this.segments.length = 1){
+      this.segments[0].x = this.loc.x;
+      this.segments[0].y = this.loc.y;
+    }
     this.loc.add(this.vel);
     this.loc.x = constrain(this.loc.x, 0, 800-20)
     this.loc.y = constrain(this.loc.y, 0, 800-20)
