@@ -20,6 +20,7 @@ function draw(){
   }
 
   checkLoc();
+  deadGame();
 }
 
 function checkLoc(){
@@ -66,5 +67,12 @@ function keyPressed(){
   }
   if(keyCode === 37){
     snake.vel = createVector(-20, 0)
+  }
+}
+
+function deadGame(){
+  if(snake.status == "true"){
+    snake = 0
+    loadSnake();
   }
 }

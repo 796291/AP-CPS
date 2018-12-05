@@ -3,9 +3,12 @@ function Snake(loc, vel){
   this.loc = loc;
   this.vel = vel;
   this.segments = [];
+  this.status = "false";
+
   this.run = function(){
     this.update();
     this.render();
+    this.dead();
   }
 
   this.update = function(){
@@ -32,4 +35,14 @@ function Snake(loc, vel){
     rect(this.loc.x, this.loc.y, 20, 20);
   }
 
+  this.dead = function(){
+    for(var i = 0; i < this.segments.length; i++){
+      var distX = this.loc.x - this.segments[i].x;
+      var distY = this.loc.y - this.segments[i].y;
+      if((distX == 0) && (distY == 0)){
+        this.status = "true";
+        console.log(this.status);
+      }
+    }
+  }
 }
