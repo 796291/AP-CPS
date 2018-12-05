@@ -29,7 +29,6 @@ function checkLoc(){
     if(distX == (0) && distY == (0)){
       food.splice(i, 1);
       loadFood(1);
-      numSeg = numSeg + 1;
       snake.segments.push(createVector(0, 0));
       console.log(snake.segments.length)
     }
@@ -39,7 +38,7 @@ function checkLoc(){
 function loadSnake(){
   var loc = createVector(200, 200);
   var vel = createVector(0, 0);
-  snake = new Snake(loc, vel, numSeg);
+  snake = new Snake(loc, vel);
 }
 
 function loadFood(numFood){
