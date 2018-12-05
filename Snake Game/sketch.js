@@ -1,18 +1,22 @@
 var snake;
 var food = [];
 var numSeg = 1;
+var start = "true"
+
+function preload(){
+}
 
 function setup(){
   frameRate(10);
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(20, 20, 20);
+  background(245, 222, 220);
   loadSnake();
   loadFood(1);
 }
 
 function draw(){
-  background(20, 20, 20);
+  background(245, 222, 220);
   snake.run();
 
   for(var i = 0; i < food.length; i++){
@@ -21,6 +25,7 @@ function draw(){
 
   checkLoc();
   deadGame();
+  gameStart();
 }
 
 function checkLoc(){
@@ -58,6 +63,7 @@ function loadFood(numFood){
 function keyPressed(){
   if(keyCode === 38){
     snake.vel = createVector(0, -20)
+    start = "false"
   }
   if(keyCode === 40){
     snake.vel = createVector(0, 20)
@@ -74,5 +80,16 @@ function deadGame(){
   if(snake.status == "true"){
     snake = 0
     loadSnake();
+    gameStart();
+  }
+}
+
+function gameStart(){
+  if(start == "true"){
+    textFont()
+    fill(255, 255, 255);
+    rect(250, 250, 350, 200);
+    fill(0, 0, 0);
+    text("Snake Game", 400, 300)
   }
 }
