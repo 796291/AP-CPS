@@ -28,10 +28,11 @@ function Snake(loc, vel){
 
   this.render = function(){
     for(var i = 0; i < this.segments.length; i++){
-      fill(0, 0, 255);
+      fill(0, 0, 0);
+      stroke(121, 139, 19);
       rect(this.segments[i].x, this.segments[i].y, 20, 20)
     }
-    fill(0, 255, 0);
+    fill(0, 0, 0);
     rect(this.loc.x, this.loc.y, 20, 20);
   }
 
