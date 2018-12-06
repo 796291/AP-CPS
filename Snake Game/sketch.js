@@ -3,6 +3,11 @@ var food = [];
 var numSeg = 1;
 var start = "true"
 var font;
+var score = 0;
+
+function preload(){
+  font = loadFont('prstart.ttf');
+}
 
 function setup(){
   textAlign(CENTER, CENTER);
@@ -25,8 +30,10 @@ function draw(){
   checkLoc();
   deadGame();
   gameStart();
+  Score();
 }
 
+//eat food
 function checkLoc(){
   for(var i = 0; i < food.length; i++){
     var distX = food[i].loc.x - snake.loc.x;
@@ -36,6 +43,7 @@ function checkLoc(){
       loadFood(1);
       snake.segments.push(createVector(0, 0));
       console.log(snake.segments.length)
+      score++;
     }
   }
 }
@@ -75,17 +83,20 @@ function keyPressed(){
   }
 }
 
+//what happens after you fail
 function deadGame(){
   if(snake.status == "true"){
-    snake = 0
+    snake = 0;
     loadSnake();
     gameStart();
+    score = 0;
   }
 }
 
+//restart / beginning of game
 function gameStart(){
   if(start == "true"){
-    textFont()
+    textFont(font);
     fill(0, 0, 0);
     rect(225, 300, 350, 200);
     fill(121, 139, 19);
@@ -95,4 +106,15 @@ function gameStart(){
     textSize(100);
     text("Snake", 400, 425)
   }
+}
+
+//retro style
+function splashScreen(){
+
+}
+
+function Score(){
+  textSize(30);
+  textAlign(LEFT);
+  text(score, 770, 30);
 }
