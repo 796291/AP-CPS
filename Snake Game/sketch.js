@@ -16,7 +16,7 @@ function preload(){
 }
 
 function setup(){
-  fSlider = createSlider(0, 30, 10);
+  fSlider = createSlider(0, 100, 10);
   fSlider.position(850, 5);
   textAlign(CENTER, CENTER);
   frameRate(frames);
@@ -78,8 +78,8 @@ function loadFood(numFood){
 }
 
 function keyPressed(){
-  start = "false"
   if(keyCode === 38){
+    start = "false"
     snake.vel = createVector(0, -20)
   }
   if(keyCode === 40){
@@ -109,21 +109,24 @@ function gameStart(){
     textFont(font);
     fill(0, 0, 0);
     //outside rectangle
-    rect(225, 300, 350, 200);
+    rect(0, 0, 800, 800);
     fill(141, 206, 113);
     //inside rectangle
-    rect(240, 315, 320, 170)
+    rect(15, 15, 770, 770)
     fill(0, 0, 0);
     textAlign(CENTER);
     textSize(100);
     text("Snake", 400, 425)
     textSize(25);
     text("Press any arrow key to begin...", 400, 625)
+    //snake picture
   }
 }
 
 function totalScore(){
-  textSize(30);
-  textAlign(CENTER);
-  text("length:" + score, 400, 30);
+  if(start == "false"){
+    textSize(30);
+    textAlign(CENTER);
+    text("length:" + score, 400, 30);
+  }
 }
