@@ -1,26 +1,36 @@
+//snake object (has segment array within)
 var snake;
+//all food kept in this array (default set 1)
 var food = [];
-var numSeg = 1;
+//true restarts game
 var start = "true"
 var font;
+//# of segments
 var score = 0;
+//frameRate slider
+var fSlider;
+var frames = 10;
 
 function preload(){
   font = loadFont('prstart.ttf');
 }
 
 function setup(){
+  fSlider = createSlider(0, 30, 10);
+  fSlider.position(850, 5);
   textAlign(CENTER, CENTER);
-  frameRate(10);
+  frameRate(frames);
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(121, 139, 19);
+  background(141, 206, 113);
   loadSnake();
   loadFood(1);
 }
 
 function draw(){
-  background(121, 139, 19);
+  frames = fSlider.value();
+  frameRate(frames);
+  background(141, 206, 113);
   snake.run();
 
   for(var i = 0; i < food.length; i++){
@@ -30,7 +40,7 @@ function draw(){
   checkLoc();
   deadGame();
   gameStart();
-  Score();
+  totalScore();
 }
 
 //eat food
@@ -98,23 +108,22 @@ function gameStart(){
   if(start == "true"){
     textFont(font);
     fill(0, 0, 0);
+    //outside rectangle
     rect(225, 300, 350, 200);
-    fill(121, 139, 19);
+    fill(141, 206, 113);
+    //inside rectangle
     rect(240, 315, 320, 170)
     fill(0, 0, 0);
     textAlign(CENTER);
     textSize(100);
     text("Snake", 400, 425)
+    textSize(25);
+    text("Press any arrow key to begin...", 400, 625)
   }
 }
 
-//retro style
-function splashScreen(){
-
-}
-
-function Score(){
+function totalScore(){
   textSize(30);
-  textAlign(LEFT);
-  text(score, 770, 30);
+  textAlign(CENTER);
+  text("length:" + score, 400, 30);
 }

@@ -10,7 +10,7 @@ function Food(loc){
     fill(0, 0, 0);
     stroke(255);
     rect(this.loc.x, this.loc.y, 20, 20);
-    stroke(121, 139, 19);
+    stroke(141, 206, 113);
   }
 
 }
