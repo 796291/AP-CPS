@@ -95,11 +95,25 @@ function keyPressed(){
 
 //what happens after you fail
 function deadGame(){
-  if(snake.status == "true"){
+  var status = snake.status
+  if(status == "true"){
     snake = 0;
-    loadSnake();
-    gameStart();
+    //loadSnake();
+    //gameStart();
     score = 0;
+    textFont(font);
+    fill(0, 0, 0);
+    //outside rectangle
+    rect(0, 0, 800, 800);
+    fill(141, 206, 113);
+    //inside rectangle
+    rect(15, 15, 770, 770)
+    fill(0, 0, 0);
+    textAlign(CENTER);
+    textSize(100);
+    text("You Lose...", 400, 425)
+    textSize(25);
+    text("Refresh the game to restart", 400, 625)
   }
 }
 
