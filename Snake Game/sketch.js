@@ -10,12 +10,14 @@ var score = 0;
 //frameRate slider
 var fSlider;
 var frames = 10;
+var img;
 
 function preload(){
   font = loadFont('prstart.ttf');
 }
 
 function setup(){
+  img = loadImage("epicsnake.jpg")
   fSlider = createSlider(0, 100, 10);
   fSlider.position(850, 5);
   textAlign(CENTER, CENTER);
@@ -95,8 +97,9 @@ function keyPressed(){
 
 //what happens after you fail
 function deadGame(){
-  var status = snake.status
+  status = snake.status
   if(status == "true"){
+    status = "true"
     snake = 0;
     //loadSnake();
     //gameStart();
@@ -133,6 +136,7 @@ function gameStart(){
     text("Snake", 400, 425)
     textSize(25);
     text("Press any arrow key to begin...", 400, 625)
+    image(img, 270, 50);
     //snake picture
   }
 }
