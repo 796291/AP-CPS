@@ -11,6 +11,7 @@ var score = 0;
 var fSlider;
 var frames = 10;
 var img;
+var showDeadScreen = "false"
 
 function preload(){
   font = loadFont('prstart.ttf');
@@ -93,17 +94,21 @@ function keyPressed(){
   if(keyCode === 37){
     snake.vel = createVector(-20, 0)
   }
+  //enter key
+  if(keyCode === 13){
+    showDeadScreen = "reset"
+  }
 }
 
 //what happens after you fail
 function deadGame(){
-  status = snake.status
-  if(status == "true"){
-    status = "true"
-    snake = 0;
-    //loadSnake();
-    //gameStart();
+  if(snake.status == "true"){
+    snake;
     score = 0;
+    showDeadScreen = "true"
+    console.log(showDeadScreen)
+  }
+  if(showDeadScreen == "true"){
     textFont(font);
     fill(0, 0, 0);
     //outside rectangle
@@ -116,7 +121,13 @@ function deadGame(){
     textSize(100);
     text("You Lose...", 400, 425)
     textSize(25);
-    text("Refresh the game to restart", 400, 625)
+    text("Press Enter to restart", 400, 625)
+  }
+  if(showDeadScreen == "reset"){
+    loadSnake();
+    gameStart();
+    showDeadScreen = "false"
+    start = "true"
   }
 }
 
@@ -142,7 +153,7 @@ function gameStart(){
 }
 
 function totalScore(){
-  if(start == "false"){
+  if(start == "false" && showDeadScreen == "false"){
     textSize(30);
     textAlign(CENTER);
     text("length:" + score, 400, 30);
