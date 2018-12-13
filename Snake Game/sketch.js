@@ -4,6 +4,7 @@ var snake;
 var food = [];
 //true restarts game
 var start = "true"
+var showDeadScreen = "false"
 var font;
 //# of segments
 var score = 0;
@@ -11,14 +12,15 @@ var score = 0;
 var fSlider;
 var frames = 10;
 var img;
-var showDeadScreen = "false"
+var img2;
 
 function preload(){
   font = loadFont('prstart.ttf');
 }
 
 function setup(){
-  img = loadImage("epicsnake.jpg")
+  img = loadImage("epicsnake.jpg");
+  img2 = loadImage("epicsnakeRIP.png");
   fSlider = createSlider(0, 100, 10);
   fSlider.position(850, 5);
   textAlign(CENTER, CENTER);
@@ -34,13 +36,14 @@ function draw(){
   frames = fSlider.value();
   frameRate(frames);
   background(141, 206, 113);
-  snake.run();
-
+  if(snake != 0){
+    snake.run();
+    checkLoc();
+  }
   for(var i = 0; i < food.length; i++){
     food[i].run();
   }
 
-  checkLoc();
   deadGame();
   gameStart();
   totalScore();
@@ -97,13 +100,15 @@ function keyPressed(){
   //enter key
   if(keyCode === 13){
     showDeadScreen = "reset"
+    console.log("a");
+    console.log(showDeadScreen);
   }
 }
 
 //what happens after you fail
 function deadGame(){
   if(snake.status == "true"){
-    snake;
+    snake = 0;
     score = 0;
     showDeadScreen = "true"
     console.log(showDeadScreen)
@@ -118,14 +123,16 @@ function deadGame(){
     rect(15, 15, 770, 770)
     fill(0, 0, 0);
     textAlign(CENTER);
-    textSize(100);
+    textSize(60);
     text("You Lose...", 400, 425)
     textSize(25);
     text("Press Enter to restart", 400, 625)
+    image(img2, 270, 50);
   }
   if(showDeadScreen == "reset"){
     loadSnake();
     gameStart();
+    console.log("yes")
     showDeadScreen = "false"
     start = "true"
   }
