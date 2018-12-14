@@ -7,10 +7,11 @@ function Food(loc){
   }
 
   this.render = function(){
-    fill(0, 0, 0);
-    stroke(255);
+    fill(204, 255, 0);
+    stroke(141, 206, 113);
     rect(this.loc.x, this.loc.y, 20, 20);
     stroke(141, 206, 113);
+    fill(0, 0, 0);
   }
 
 }

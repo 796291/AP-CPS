@@ -19,10 +19,10 @@ function preload(){
 }
 
 function setup(){
-  img = loadImage("epicsnake.jpg");
+  img = loadImage("epicsnake1.png");
   img2 = loadImage("epicsnakeRIP.png");
   fSlider = createSlider(0, 100, 10);
-  fSlider.position(850, 5);
+  fSlider.position(780, 5);
   textAlign(CENTER, CENTER);
   frameRate(frames);
   var cnv = createCanvas(800, 800);
