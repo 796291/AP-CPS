@@ -159,6 +159,7 @@ function deadGame(){
     text("You Lose...", 400, 425)
     textSize(25);
     text("Press Enter to restart", 400, 625)
+    //snake picture
     image(img2, 270, 50);
   }
   if(showDeadScreen == "reset"){
@@ -186,12 +187,13 @@ function gameStart(){
     text("Snake", 400, 425)
     textSize(25);
     text("Press any arrow key to begin...", 400, 625)
-    image(img, 270, 50);
     //snake picture
+    image(img, 270, 50);
   }
 }
 
 function totalScore(){
+  //shows the length of the snake
   if(start == "false" && showDeadScreen == "false"){
     textSize(30);
     textAlign(CENTER);
