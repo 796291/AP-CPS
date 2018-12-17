@@ -2,32 +2,41 @@
 var snake;
 //all food kept in this array (default set 1)
 var food = [];
-//true restarts game
+//sets up start screen
 var start = "true"
+//make sure end screen isnt called
 var showDeadScreen = "false"
-var font;
 //# of segments
 var score = 0;
 //frameRate slider
 var fSlider;
+//default frames
 var frames = 10;
+//start image
 var img;
+//end image
 var img2;
+//font
+var font;
 
 function preload(){
   font = loadFont('prstart.ttf');
 }
 
 function setup(){
+  //load images so they can be used later
   img = loadImage("epicsnake1.png");
   img2 = loadImage("epicsnakeRIP.png");
+  //creates frame rate slider
   fSlider = createSlider(0, 100, 10);
   fSlider.position(780, 5);
-  textAlign(CENTER, CENTER);
   frameRate(frames);
+  //sets up basics
+  textAlign(CENTER, CENTER);
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(141, 206, 113);
+  //calls snake and food
   loadSnake();
   loadFood(1);
 }
@@ -36,6 +45,8 @@ function draw(){
   frames = fSlider.value();
   frameRate(frames);
   background(141, 206, 113);
+  //makes sure snake function and functions relating to snake function
+  //are not called during certain circumstances (when the snake is reset)
   if(snake != 0){
     snake.run();
     checkLoc();
@@ -43,7 +54,7 @@ function draw(){
   for(var i = 0; i < food.length; i++){
     food[i].run();
   }
-
+  //call functions
   deadGame();
   gameStart();
   totalScore();
@@ -64,37 +75,56 @@ function checkLoc(){
   }
 }
 
+//creates Snake
 function loadSnake(){
   var loc = createVector(200, 200);
   var vel = createVector(0, 0);
   snake = new Snake(loc, vel);
 }
 
+//puts a locations to a piece of food and puts it in the food array
 function loadFood(numFood){
   for(var i = 0; i < numFood; i++){
-    var min = 1;
     //40 * 20 = 800
+    var min = 1;
     var max = 39;
+    //random x & y between 0 and 800
     var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
     var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
+    //checks snake head ro make sure food loc doesn't = snake loc
+    if((locX == snake.loc.x) && (locY == snake.loc.y)){
+      locX = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
+      locY = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
+    }
+    //checks every segment to make sure food loc doesn't = segment loc
+    for(var i = 0; i < snake.segments.length; i++){
+      if((locX == snake.segments[i].x) && (locY == snake.segments[i].y)){
+        locX = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
+        locY = (Math.floor(Math.random() * (max - min + 1) + min)) * 20;
+      }
+    }
     var loc = createVector(locX, locY);
     var f = new Food(loc);
     food.push(f);
   }
 }
 
+//tests when a certain key is pressed
 function keyPressed(){
   if(keyCode === 38){
     start = "false"
     snake.vel = createVector(0, -20)
   }
   if(keyCode === 40){
+    start = "false"
     snake.vel = createVector(0, 20)
   }
   if(keyCode === 39){
+    start = "false"
     snake.vel = createVector(20, 0)
   }
   if(keyCode === 37){
+    start = "false"
     snake.vel = createVector(-20, 0)
   }
   //enter key
@@ -113,7 +143,9 @@ function deadGame(){
     showDeadScreen = "true"
     console.log(showDeadScreen)
   }
+  //when the end screen is shown
   if(showDeadScreen == "true"){
+    //END SCREEN
     textFont(font);
     fill(0, 0, 0);
     //outside rectangle

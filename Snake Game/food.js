@@ -7,6 +7,7 @@ function Food(loc){
   }
 
   this.render = function(){
+    //draws snake
     fill(204, 255, 0);
     stroke(141, 206, 113);
     rect(this.loc.x, this.loc.y, 20, 20);

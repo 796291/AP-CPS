@@ -12,6 +12,7 @@ function Snake(loc, vel){
   }
 
   this.update = function(){
+    //moves segments
     for(var i = this.segments.length - 1; i >= 0; i--){
       if(i > 0){
         this.segments[i].x = this.segments[i-1].x;
@@ -22,11 +23,13 @@ function Snake(loc, vel){
       }
     }
     this.loc.add(this.vel);
+    //makes sure head of snake stays on canvas
     this.loc.x = constrain(this.loc.x, 0, 800-20)
     this.loc.y = constrain(this.loc.y, 0, 800-20)
   }
 
   this.render = function(){
+    //draws snake
     for(var i = 0; i < this.segments.length; i++){
       fill(0, 0, 0);
       stroke(141, 206, 113);
@@ -37,6 +40,7 @@ function Snake(loc, vel){
   }
 
   this.dead = function(){
+    //checks if snake has tangled
     for(var i = 0; i < this.segments.length; i++){
       var distX = this.loc.x - this.segments[i].x;
       var distY = this.loc.y - this.segments[i].y;
